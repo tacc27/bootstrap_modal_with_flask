@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.username.label(class='form-label') }}
+        {% if form.username.errors %}
+            {{ form.username(class='form-control is-invalid') }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                      {{error}}
+                {% endfor %}
+              </div>
+        {% else %}
+            {{ form.username(class='form-control') }}
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        {{ form.title.label(class='form-label') }}
+        {% if form.title.errors %}
+            {{ form.title(class='form-control is-invalid') }}
+              <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                      {{error}}
+                {% endfor %}
+              </div>
+        {% else %}
+            {{ form.title(class='form-control') }}
+        {% endif %}
+    </div>
+    <div class="mb-3">
+    {{ form.body.label(class='form-label') }}
+    {% if form.body.errors %}
+        {{ form.body(class='form-control is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.body.errors %}
+                  {{error}}
+            {% endfor %}
+          </div>
+    {% else %}
+        {{ form.body(class='form-control') }}
+    {% endif %}
+</div>
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+
+
+{% endblock %}
